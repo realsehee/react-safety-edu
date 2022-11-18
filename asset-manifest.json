@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/react-safety-edu/static/css/main.c923f40f.css",
+    "main.js": "/react-safety-edu/static/js/main.2e797e47.js",
+    "static/js/787.d676841c.chunk.js": "/react-safety-edu/static/js/787.d676841c.chunk.js",
+    "index.html": "/react-safety-edu/index.html",
+    "main.c923f40f.css.map": "/react-safety-edu/static/css/main.c923f40f.css.map",
+    "main.2e797e47.js.map": "/react-safety-edu/static/js/main.2e797e47.js.map",
+    "787.d676841c.chunk.js.map": "/react-safety-edu/static/js/787.d676841c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c923f40f.css",
+    "static/js/main.2e797e47.js"
+  ]
+}
