@@ -93,6 +93,7 @@
 .play {
     background-color: red;
     color: white;
+    border-radius: 10px;
 }
 .info {
     background-color: rgba(109, 109, 110, 0.7);
