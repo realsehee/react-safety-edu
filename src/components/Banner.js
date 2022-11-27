@@ -50,7 +50,7 @@ export default function Banner() {
                         <div className="banner__buttons">
                             <button className="banner__button play"
                             onClick={() => setIsClicked(true)}>Play</button>
-                            {/* <button className="banner__button info">More Information</button> */}
+                            {/* <button className="banner__button info">다함께 안전건강</button> */}
                         </div>
                         {/* <h1 className='banner__description'>{truncate(movie.overview, 100)}</h1> */}
                     </div>

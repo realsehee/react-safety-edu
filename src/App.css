@@ -4,3 +4,15 @@
 .App {
   background: #111;
 }
+@media(prefers-color-scheme:light) {
+  body{
+    background-color: whitesmoke;
+    color: #111;
+  }
+}
+@media(prefers-color-scheme:dark){
+  body{
+    background-color: #111;
+    color:whitesmoke
+  }
+}
