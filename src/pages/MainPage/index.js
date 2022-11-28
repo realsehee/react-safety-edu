@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Banner from "../../components/Banner";
+import Nav from "../../components/Nav"
 import "../../components/Row";
 import requests from "../../api/requests";
 import styled from "styled-components";
@@ -14,6 +15,14 @@ import cancer1 from "../../public/cancer1.png"
 import cancer2 from "../../public/cancer2.png"
 import cancer3 from "../../public/cancer3.png"
 import cancer4 from "../../public/cancer4.png"
+import heart1 from "../../public/heart1.png"
+import heart2 from "../../public/heart2.png"
+import heart3 from "../../public/heart3.png"
+import heart4 from "../../public/heart4.png"
+import lung1 from "../../public/lung1.png"
+import lung2 from "../../public/lung2.png"
+import lung3 from "../../public/lung3.png"
+import lung4 from "../../public/lung4.png"
 export default function MainPage(title,id) {
   const [video, setVideo] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,133 +31,104 @@ export default function MainPage(title,id) {
   // useEffect(()=>{
   //   fetchVideoData();
   // },[]);
-
   const handleClick = (video) =>{
     setModalOpen(true);
     setvideoSelected(video);
+    modalOpen && <MovieModal {...videoSelected} setModalOpen={setModalOpen}/>
   };
-
+  const handleClick1 = (video) =>{
+    setModalOpen(true);
+    setvideoSelected(video);
+    
+  };
   return (
     <div>
+      <Nav/>
       <Banner />
         <Container>
           <HomeContainer>
           <Title>암</Title>
           <Thumb
+            title='암 전조 증상'
             alt="안전교육"
             src={cancer1}
             className="row__poster"
             onClick={()=>handleClick(video)}
           />
+          {modalOpen && <MovieModal {...videoSelected} setModalOpen={setModalOpen}/>}
           <Thumb
+            title='암 전조 증상'
             alt="안전교육"
             src={cancer2}
             className="row__poster"
-            onClick={()=>window.location.reload()}
+            onClick={()=>handleClick1(video)}
           />
           <Thumb
+            title='암 전조 증상'
             alt="안전교육"
             src={cancer3}
             className="row__poster"
             onClick={()=>window.location.reload()}
           />
           <Thumb
+            title='암 전조 증상'
             alt="안전교육"
             src={cancer4}
             className="row__poster"
             onClick={()=>window.location.reload()}
           />
-          <Iframe
-            src="https://www.youtube.com/embed/n2WkSIXHyK0" 
-            title="YouTube video player"
-            frameborder="0" 
-            allow=" autoplay; fullscreen" allowfullscreen
-            className="row__poster">
-          </Iframe>
-          <Iframe
-          src="https://www.youtube.com/embed/uFujdBUj5Io"
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="autoplay; fullscreen" 
-          allowfullscreen
-          className="row__poster">
-          </Iframe>  
-          <Iframe  
-            src="https://www.youtube.com/embed/1v8QyP6WF64"
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="autoplay; fullscreen" allowfullscreen
-            className="row__poster">
-          </Iframe>
-          <Iframe  
-            src="https://www.youtube.com/embed/snmCVIFznms"
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="autoplay; fullscreen" allowfullscreen
-            className="row__poster">
-          </Iframe>
+          
       <Title>심장</Title>
-        <Iframe 
-        src="https://www.youtube.com/embed/znYn1slXWh8" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="autoplay;"
-        allowfullscreen
-        className="row__poster">  
-        </Iframe>
-        <Iframe
-        src="https://www.youtube.com/embed/6bNlBOtNV1o" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="autoplay; " 
-        allowfullscreen
-        className="row__poster">
-        </Iframe>  
-        <Iframe  
-          src="https://www.youtube.com/embed/jct8qtBRp6w" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="autoplay; " allowfullscreen
-          className="row__poster">
-        </Iframe>
-        <Iframe  
-          src="https://www.youtube.com/embed/85OxiZscPWg" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="autoplay;" allowfullscreen
-          className="row__poster">
-        </Iframe>
+      <Thumb
+        title='암에 대해 알아봅시다.'
+        alt="안전교육"
+        src={heart1}
+        className="row__poster"
+        onClick={()=>handleClick(video)}
+      />
+      <Thumb
+        alt="안전교육"
+        src={heart2}
+        className="row__poster"
+        onClick={()=>window.location.reload()}
+      />
+      <Thumb
+        alt="안전교육"
+        src={heart3}
+        className="row__poster"
+        onClick={()=>window.location.reload()}
+      />
+      <Thumb
+        alt="안전교육"
+        src={heart4}
+        className="row__poster"
+        onClick={()=>window.location.reload()}
+      />
       <Title>폐렴</Title>
-        <Iframe  
-          src="https://www.youtube.com/embed/dEpTfOS7BE4"
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="autoplay;" allowfullscreen
-          className="row__poster">
-        </Iframe> 
-        <Iframe  
-          src="https://www.youtube.com/embed/IMnH_LbiGF0" 
-          title="YouTube video player"
-          frameborder="0" 
-          allow=" autoplay;" allowfullscreen
-          className="row__poster"
-          >
-        </Iframe>
-        <Iframe
-        src="https://www.youtube.com/embed/xN6Sl8m-j6g"
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="autoplay; " 
-        allowfullscreen
-        className="row__poster">
-        </Iframe>  
-        <Iframe  
-          src="https://www.youtube.com/embed/LoQLQdKvz0o" 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="autoplay; " allowfullscreen
-          className="row__poster">
-        </Iframe>
+      <Thumb
+        alt="안전교육"
+        src={lung1}
+        className="row__poster"
+        onClick={()=>window.location.reload()}
+      />
+      <Thumb
+        alt="안전교육"
+        src={lung2}
+        className="row__poster"
+        onClick={()=>window.location.reload()}
+      />
+      <Thumb
+        alt="안전교육"
+        src={lung3}
+        className="row__poster"
+        onClick={()=>window.location.reload()}
+      />
+      <Thumb
+        alt="안전교육"
+        src={lung4}
+        className="row__poster"
+        onClick={()=>window.location.reload()}
+      />
       <Title>실습 & 퀴즈</Title>
       <Logo>
         <Button>
@@ -204,7 +184,7 @@ export default function MainPage(title,id) {
           id="Cm"
           fetchUrl={requests.fetchComedyMovies}
         /> */}
-        { modalOpen && <MovieModal {...videoSelected} setModalOpen={setModalOpen}/>}
+        
         </HomeContainer>
       </Container>
       
@@ -262,9 +242,6 @@ const Button = styled.button`
   background-size: cover;
   background-color : #111;
   border : none;
-
-}
-
 `
 const Img = styled.img`
   display: flex;
@@ -275,7 +252,6 @@ const Img = styled.img`
   background-size: cover;
   border-radius: 50px;
   background-color : #111;
-
 `
 const Thumb = styled.img`
   width : 20%;
@@ -283,7 +259,7 @@ const Thumb = styled.img`
   z-index: -1;
   opacity: 0.65;
   border: none;
-  border-radius : 12px;
+  border-radius : 20px;
 
   &::after{
       MovieModal
