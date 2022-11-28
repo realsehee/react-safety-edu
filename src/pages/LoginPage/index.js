@@ -1,104 +1,98 @@
-import React, { useCallback, useState } from "react";
-import useInput from "react-dom"
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import "./LoginPage.css";
+import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 
 export default function LoginPage() {
-  const Login = () => {
-    const [id, onChangeId, setId] = useInput("");
-    const [pwd, onChangePwd, setPwd] = useInput("");
-  
-    const onReset = useCallback(() => {
-      setId("");
-      setPwd("");
-    }, [setId, setPwd]);
-  
-    const onLogin = () => {
-      if (!id || !pwd) {
-        alert("모든 값을 정확하게 입력해주세요");
-        return;
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [loginStatus, setLoginStatus] = useState("");
+
+  Axios.defaults.withCredentials = true;
+
+  const navigate = useNavigate();
+  const login = () => {
+    Axios.post("http://localhost:3001/login", {
+      username: username,
+      password: password,
+    }).then((response) => {
+      if (response.data.message) {
+        setLoginStatus(response.data.message);
+      } else {
+        setLoginStatus(response.data[0].username);
       }
-  
-      alert("로그인");
-      onReset();
-    };
-  
-    return (
-      <Container>
-        <Title>Safety Education</Title>
-        <form>
-          <InputContainer>
-            <InputItem>
-              <InputLabel htmlFor="user_id">아이디:</InputLabel>
-              <InputDiv>
-                <MyInput
-                  id="user_id"
-                  value={id}
-                  onChange={onChangeId}
-                  placeholder="아이디를 입력해주세요"
-                  required
-                />
-                <hr />
-              </InputDiv>
-            </InputItem>
-            <InputItem>
-              <InputLabel htmlFor="user_pwd">비밀번호:</InputLabel>
-              <InputDiv>
-                <MyInput
-                  id="user_pwd"
-                  value={pwd}
-                  onChange={onChangePwd}
-                  placeholder="비밀번호를 입력해주세요"
-                  required
-                />
-                <hr />
-              </InputDiv>
-            </InputItem>
-          </InputContainer>
-        </form>
-        <LoginBtn type="submit" value="로그인" onClick={onLogin}/>
-        <Link to="/signup">
-          <LoginBtn type="submit" value="회원가입" />
-        </Link>
-      </Container>
-    );
+    });
+    navigate("/MainPage")
   };
+
+  return (
+    <Container>
+      <HomeContainer className="login">
+        <Title>Safety Education</Title>
+        <Title1>Login</Title1>
+        <Input
+          type="text"
+          placeholder="아이디를 입력하세요"
+          onChange={(e) => {
+            setUsername(e.target.value);
+          }}
+        />
+        <Input
+          type="password"
+          placeholder="비밀번호를 입력하세요"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+        <Button onClick={login}> 로그인 </Button>
+      </HomeContainer >
+    </Container>
+  );
 }
-  
 const Container = styled.div`
-  width : 100%;
-  height : 100%;
-  color : #111;
+  display: flex;
+  justify-content: center;
+  align-item: center;
+  flex-direction: column;
+  width: 100;
+  height: 100vh;
 `
-const Title = styled.div`
-  width : 100%;
-  height : 100%;
-  color : #111;
+const HomeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 600px;
+  height: 400px;
+  flex-direction: column;
+  background-color : red;
 `
-const InputContainer = styled.div`
-  width : 100%;
-  height : 100%;
+const Input = styled.input`
+  display: flex;
+  justify-content: center;
+  align-item: center;
+  flex-direction: column;
+  width : 400px;
+  height : 40px;
 `
-const InputItem = styled.div`
-  width : 100%;
-  height : 100%;
+const Button = styled.button`
+  display : flex;
+  justify-content: center;
+  align-item: center;
+  width:10%;
+  height:10%;
+  background-size: cover;
+  border : none;
 `
-const InputLabel = styled.div`
-  width : 100%;
-  height : 100%;
+const Title = styled.h1`
+  display: flex;
+  justify-content: center;
+  align-item: center;
 `
-const InputDiv = styled.div`
-  width : 100%;
-  height : 100%;
-`
-const MyInput = styled.div`
-  width : 100%;
-  height : 100%;
-`
-const LoginBtn = styled.div`
-  width : 100%;
-  height : 100%;
-`
-const Link = styled.div`
-  width : 100%;
-  height : 100%;
+const Title1 = styled.h2`
+  display: flex;
+  justify-content: center;
+  align-item: center;
 `

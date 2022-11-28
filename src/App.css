@@ -3,6 +3,7 @@
 }
 .App {
   background: #111;
+  color: white;
 }
 @media(prefers-color-scheme:light) {
   body{
