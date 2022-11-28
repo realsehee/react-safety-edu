@@ -67,10 +67,12 @@ export default function LoginPage() {
 const Container = styled.div`
   width : 100%;
   height : 100%;
+  color : #111;
 `
 const Title = styled.div`
   width : 100%;
   height : 100%;
+  color : #111;
 `
 const InputContainer = styled.div`
   width : 100%;
