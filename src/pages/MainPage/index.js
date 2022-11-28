@@ -10,13 +10,54 @@ import cancer from "../../public/cancer.png";
 import heart from "../../public/heart.png";
 import lung from "../../public/lung.png"
 import safety_logo1 from "../../public/safety_logo1.png"
-export default function MainPage() {
+import cancer1 from "../../public/cancer1.png"
+import cancer2 from "../../public/cancer2.png"
+import cancer3 from "../../public/cancer3.png"
+import cancer4 from "../../public/cancer4.png"
+export default function MainPage(title,id) {
+  const [video, setVideo] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [videoSelected, setvideoSelected] = useState({});
+
+  // useEffect(()=>{
+  //   fetchVideoData();
+  // },[]);
+
+  const handleClick = (video) =>{
+    setModalOpen(true);
+    setvideoSelected(video);
+  };
+
   return (
     <div>
       <Banner />
         <Container>
           <HomeContainer>
           <Title>암</Title>
+          <Thumb
+            alt="안전교육"
+            src={cancer1}
+            className="row__poster"
+            onClick={()=>handleClick(video)}
+          />
+          <Thumb
+            alt="안전교육"
+            src={cancer2}
+            className="row__poster"
+            onClick={()=>window.location.reload()}
+          />
+          <Thumb
+            alt="안전교육"
+            src={cancer3}
+            className="row__poster"
+            onClick={()=>window.location.reload()}
+          />
+          <Thumb
+            alt="안전교육"
+            src={cancer4}
+            className="row__poster"
+            onClick={()=>window.location.reload()}
+          />
           <Iframe
             src="https://www.youtube.com/embed/n2WkSIXHyK0" 
             title="YouTube video player"
@@ -90,7 +131,8 @@ export default function MainPage() {
           title="YouTube video player"
           frameborder="0" 
           allow=" autoplay;" allowfullscreen
-          className="row__poster">
+          className="row__poster"
+          >
         </Iframe>
         <Iframe
         src="https://www.youtube.com/embed/xN6Sl8m-j6g"
@@ -162,6 +204,7 @@ export default function MainPage() {
           id="Cm"
           fetchUrl={requests.fetchComedyMovies}
         /> */}
+        { modalOpen && <MovieModal {...videoSelected} setModalOpen={setModalOpen}/>}
         </HomeContainer>
       </Container>
       
@@ -233,4 +276,22 @@ const Img = styled.img`
   border-radius: 50px;
   background-color : #111;
 
+`
+const Thumb = styled.img`
+  width : 20%;
+  height: 20%;
+  z-index: -1;
+  opacity: 0.65;
+  border: none;
+  border-radius : 12px;
+
+  &::after{
+      MovieModal
+      content:"";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
 `
